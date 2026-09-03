@@ -5,6 +5,8 @@ public class CueStick : MonoBehaviour
 {
     public float maxOffset = -3;
 
+    public float initialZPos = 1;
+
     public float maxBounceForce = 10f;
 
     private InputAction aimAction;
@@ -27,14 +29,14 @@ public class CueStick : MonoBehaviour
 
         if (isShooting && bounceForce > 0f)
         {
-            transform.localPosition = new Vector3(0f, 0f, 0f);
+            transform.localPosition = new Vector3(0f, 0f, initialZPos);
             didShoot = true;
         }
         else if (!didShoot)
         {
             float zPos = Mathf.Lerp(0f, maxOffset, aimInput);
 
-            transform.localPosition = new Vector3(0f, 0f, zPos);
+            transform.localPosition = new Vector3(0f, 0f, initialZPos + zPos);
             bounceForce = Mathf.Lerp(0f, maxBounceForce, aimInput);
         }
         else if (aimInput <= 0.01f)
@@ -45,25 +47,11 @@ public class CueStick : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("CUE STICK TRIGGER " + other.tag + "FORCE " + bounceForce);
-
-        if (other.gameObject.CompareTag("CueBall"))
+        if (didShoot && other.gameObject.CompareTag("CueBall"))
         {
             Vector3 shootVector = other.gameObject.transform.position - transform.position;
             Rigidbody otherBody = other.gameObject.GetComponent<Rigidbody>();
             otherBody.AddForce(shootVector * bounceForce, ForceMode.Impulse);
         }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("CUE STICK COLLISION " + collision.gameObject.tag);
-        // if (collision.gameObject.CompareTag("CueBall"))
-        // {
-        //     foreach (ContactPoint contact in collision.contacts)
-        //     {
-        //         contact.otherCollider.attachedRigidbody.AddForce(-1f * contact.normal * bounceForce, ForceMode.Impulse);
-        //     }
-        // }
     }
 }
