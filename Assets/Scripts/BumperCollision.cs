@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BumperCollision : MonoBehaviour
 {
-    public float bounceForce = 10f;
+    public float bounceForce = 2f;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -10,7 +10,7 @@ public class BumperCollision : MonoBehaviour
         {
             foreach (ContactPoint contact in collision.contacts)
             {
-                contact.otherCollider.attachedRigidbody.AddForce(-1f * contact.normal * bounceForce, ForceMode.Impulse);
+                contact.otherCollider.attachedRigidbody.AddForce(contact.impulse * bounceForce, ForceMode.Impulse);
             }
         }
     }
