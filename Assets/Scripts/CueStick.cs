@@ -1,57 +1,110 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Animator))]
 public class CueStick : MonoBehaviour
 {
+    public static event Action<Vector3, float> OnCueTarget;
+    public static event Action OnCueTargetLost;
+
+    private static readonly int IsAimingHash = Animator.StringToHash("isAiming");
+    private static readonly int IsShootingHash = Animator.StringToHash("isShooting");
+
+    public LayerMask hitMask;
     public float maxOffset = -3;
 
     public float initialZPos = 1;
 
     public float maxBounceForce = 10f;
+    public float maxAimDistance = 2f;
 
+    private Animator animator;
     private InputAction aimAction;
     private InputAction shootAction;
-    private float bounceForce = 0f;
-    private bool didShoot = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool isAiming = false;
+    private bool isShooting = false;
+    private bool hasTarget = false;
+    private float shootFactor = 0;
+    private bool didShoot = false;
+    private RaycastHit hit;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         aimAction = InputSystem.actions.FindAction("Aim");
         shootAction = InputSystem.actions.FindAction("Jump");
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float aimInput = aimAction.ReadValue<float>();
-        bool isShooting = shootAction.WasPressedThisFrame();
+        UpdateAim();
+        FindTarget();
+        ApplyForce();
+    }
 
-        if (isShooting && bounceForce > 0f)
-        {
-            transform.localPosition = new Vector3(0f, 0f, initialZPos);
-            didShoot = true;
-        }
-        else if (!didShoot)
-        {
-            float zPos = Mathf.Lerp(0f, maxOffset, aimInput);
+    private void UpdateAim()
+    {
+        bool wasAiming = isAiming;
+        bool wasShooting = isShooting;
 
-            transform.localPosition = new Vector3(0f, 0f, initialZPos + zPos);
-            bounceForce = Mathf.Lerp(0f, maxBounceForce, aimInput);
-        }
-        else if (aimInput <= 0.01f)
+        isAiming = aimAction.IsPressed();
+        isShooting = shootAction.IsPressed();
+
+        animator.SetBool(IsAimingHash, isAiming);
+        animator.SetBool(IsShootingHash, isShooting);
+
+        if (wasShooting && !isShooting)
         {
             didShoot = false;
         }
+
+        if (wasAiming && !isAiming)
+        {
+            OnCueTargetLost.Invoke();
+        }
     }
 
-    void OnTriggerEnter(Collider other)
+    private void FindTarget()
     {
-        if (didShoot && other.gameObject.CompareTag("CueBall"))
+        if (!isAiming)
         {
-            Vector3 shootVector = other.gameObject.transform.position - transform.position;
-            Rigidbody otherBody = other.gameObject.GetComponent<Rigidbody>();
-            otherBody.AddForce(shootVector * bounceForce, ForceMode.Impulse);
+            hasTarget = false;
+            return;
         }
+
+        if (
+            Physics.Raycast(transform.position, transform.forward, out hit, maxAimDistance, hitMask)
+        )
+        {
+            Debug.DrawLine(transform.position, hit.point, Color.red);
+            shootFactor = 1 - hit.distance / maxAimDistance;
+            hasTarget = true;
+            OnCueTarget.Invoke(hit.point, shootFactor);
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.forward * maxAimDistance, Color.green);
+            hasTarget = false;
+            OnCueTargetLost.Invoke();
+        }
+    }
+
+    private void ApplyForce()
+    {
+        if (!(isShooting && hasTarget && !didShoot))
+        {
+            return;
+        }
+
+        Vector3 shootVector = hit.point - transform.position;
+        float shootForce = maxBounceForce * shootFactor;
+        hit.rigidbody.AddForce(shootForce * shootVector, ForceMode.Impulse);
+
+        didShoot = true;
+
+        Debug.Log($"SHOOT FORCE: {shootForce} ({shootFactor}) ({hit.distance})");
     }
 }
