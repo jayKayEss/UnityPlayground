@@ -17,10 +17,12 @@ public class CueStick : MonoBehaviour
     public float initialZPos = 1;
 
     public float maxBounceForce = 10f;
+    public float aimSpeed = 40f;
     public float maxAimDistance = 2f;
 
     private Animator animator;
     private InputAction aimAction;
+    private InputAction lookAction;
     private InputAction shootAction;
 
     private bool isAiming = false;
@@ -34,18 +36,21 @@ public class CueStick : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         aimAction = InputSystem.actions.FindAction("Aim");
+        lookAction = InputSystem.actions.FindAction("Look");
         shootAction = InputSystem.actions.FindAction("Jump");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        ReadInputs();
         UpdateAim();
         FindTarget();
+        DebugForceVector();
         ApplyForce();
     }
 
-    private void UpdateAim()
+    private void ReadInputs()
     {
         bool wasAiming = isAiming;
         bool wasShooting = isShooting;
@@ -64,6 +69,22 @@ public class CueStick : MonoBehaviour
         if (wasAiming && !isAiming)
         {
             OnCueTargetLost.Invoke();
+        }
+    }
+
+    private void UpdateAim()
+    {
+        if (!isAiming)
+        {
+            return;
+        }
+
+        Vector2 lookInput = lookAction.ReadValue<Vector2>();
+
+        if (lookInput.magnitude > 0f)
+        {
+            Vector3 rotationVector = new(-lookInput.y, 0f, 0f);
+            transform.Rotate(aimSpeed * Time.deltaTime * rotationVector);
         }
     }
 
@@ -92,6 +113,18 @@ public class CueStick : MonoBehaviour
         }
     }
 
+    private Vector3 ShootVector()
+    {
+        Vector3 shootVector = hit.point - transform.position;
+        float shootForce = maxBounceForce * shootFactor;
+        return shootForce * shootVector;
+    }
+
+    private void DebugForceVector()
+    {
+        Debug.DrawRay(hit.point, ShootVector(), Color.yellow);
+    }
+
     private void ApplyForce()
     {
         if (!(isShooting && hasTarget && !didShoot))
@@ -99,12 +132,8 @@ public class CueStick : MonoBehaviour
             return;
         }
 
-        Vector3 shootVector = hit.point - transform.position;
-        float shootForce = maxBounceForce * shootFactor;
-        hit.rigidbody.AddForce(shootForce * shootVector, ForceMode.Impulse);
+        hit.rigidbody.AddForceAtPosition(ShootVector(), hit.point, ForceMode.Impulse);
 
         didShoot = true;
-
-        Debug.Log($"SHOOT FORCE: {shootForce} ({shootFactor}) ({hit.distance})");
     }
 }
