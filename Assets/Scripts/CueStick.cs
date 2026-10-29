@@ -25,6 +25,7 @@ public class CueStick : MonoBehaviour
     private InputAction lookAction;
     private InputAction shootAction;
 
+    private Quaternion initialRotation;
     private bool isAiming = false;
     private bool isShooting = false;
     private bool hasTarget = false;
@@ -32,9 +33,14 @@ public class CueStick : MonoBehaviour
     private bool didShoot = false;
     private RaycastHit hit;
 
-    void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
+        initialRotation = transform.localRotation;
+    }
+
+    void Start()
+    {
         aimAction = InputSystem.actions.FindAction("Aim");
         lookAction = InputSystem.actions.FindAction("Look");
         shootAction = InputSystem.actions.FindAction("Jump");
@@ -68,6 +74,7 @@ public class CueStick : MonoBehaviour
 
         if (wasAiming && !isAiming)
         {
+            ResetAim();
             OnCueTargetLost.Invoke();
         }
     }
@@ -86,6 +93,11 @@ public class CueStick : MonoBehaviour
             Vector3 rotationVector = new(-lookInput.y, 0f, 0f);
             transform.Rotate(aimSpeed * Time.deltaTime * rotationVector);
         }
+    }
+
+    private void ResetAim()
+    {
+        transform.localRotation = initialRotation;
     }
 
     private void FindTarget()
@@ -122,7 +134,10 @@ public class CueStick : MonoBehaviour
 
     private void DebugForceVector()
     {
-        Debug.DrawRay(hit.point, ShootVector(), Color.yellow);
+        if (isAiming && hasTarget)
+        {
+            Debug.DrawRay(hit.point, ShootVector(), Color.yellow);
+        }
     }
 
     private void ApplyForce()

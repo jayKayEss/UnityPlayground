@@ -1,0 +1,222 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8939563593046258976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7366027060738747227}
+  - component: {fileID: 4079315376006881790}
+  - component: {fileID: 336947076829730281}
+  - component: {fileID: 1969814540588846950}
+  m_Layer: 0
+  m_Name: Cue Ball Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7366027060738747227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939563593046258976}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7009093, y: -0.000000013516641, z: 0.000000013282768, w: 0.71325046}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6807135420800735595}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4079315376006881790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939563593046258976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+  Priority:
+    Enabled: 0
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 3709163911461152573}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 80
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 32
+--- !u!114 &336947076829730281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939563593046258976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
+  TrackerSettings:
+    BindingMode: 4
+    PositionDamping: {x: 0.5, y: 0.5, z: 0.5}
+    AngularDampingMode: 0
+    RotationDamping: {x: 1000, y: 1, z: 1000}
+    QuaternionDamping: 1
+  FollowOffset: {x: 0, y: 2.5, z: 0}
+--- !u!114 &1969814540588846950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939563593046258976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 1
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 1
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 1, y: 1}
+  Lookahead:
+    Enabled: 1
+    Time: 0.5
+    Smoothing: 8
+    IgnoreY: 0
+--- !u!1001 &7252334560333476653
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 698431580592049080, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_Name
+      value: Cue Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.92599
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.49059
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7366027060738747227}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 698431580592049080, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6069117671980391774}
+  m_SourcePrefab: {fileID: 100100000, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+--- !u!4 &3709163911461152573 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6331198196762547216, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+  m_PrefabInstance: {fileID: 7252334560333476653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6807135420800735595 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+  m_PrefabInstance: {fileID: 7252334560333476653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7859946874397898901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 698431580592049080, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+  m_PrefabInstance: {fileID: 7252334560333476653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6069117671980391774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7859946874397898901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6590735aca443a893d4d385bfd83be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CueBall
+  initialDrag: 0.5
+  dragVelocity: 0.5
+  minFollowVelocity: 0.3
+  cameraPriority: 2
+  minCameraSwitchTime: 0.5
