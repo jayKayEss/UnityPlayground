@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 457309415691685589}
   - component: {fileID: 5455870875131503358}
   - component: {fileID: 5693799286154889051}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CueStickMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1707471203919486129}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 9153392934243135447}
   - component: {fileID: 1043928427703765751}
   - component: {fileID: -7827440626495982607}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CueStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
     m_Bits: 64
   maxOffset: -1.5
   initialZPos: 1
-  maxBounceForce: 40
+  maxBounceForce: 25
   maxAimDistance: 1.5
 --- !u!95 &-7827440626495982607
 Animator:
