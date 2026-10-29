@@ -1282,6 +1282,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: CueBall
       objectReference: {fileID: 0}
+    - target: {fileID: 4226902878372258757, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+      propertyPath: FollowOffset.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226902878372258757, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+      propertyPath: FollowOffset.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226902878372258757, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+      propertyPath: TrackerSettings.BindingMode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226902878372258757, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+      propertyPath: TrackerSettings.RotationDamping.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226902878372258757, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+      propertyPath: TrackerSettings.RotationDamping.z
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271549165630687726, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271549165630687726, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271549165630687726, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.71325046
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271549165630687726, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7009093
+      objectReference: {fileID: 0}
     - target: {fileID: 8456841031596821795, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1322,10 +1358,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6909329519392887745, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8103307832034781211, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2062690699}
   m_SourcePrefab: {fileID: 100100000, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
 --- !u!1001 &434609692
 PrefabInstance:
@@ -3743,6 +3783,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 936341732353881802, guid: d3eb2a86c1f1d4d9d932c480471a790b, type: 3}
+      propertyPath: StandbyUpdate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 936341732353881802, guid: d3eb2a86c1f1d4d9d932c480471a790b, type: 3}
+      propertyPath: Priority.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 936341732353881802, guid: d3eb2a86c1f1d4d9d932c480471a790b, type: 3}
+      propertyPath: Priority.m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6357304406680777356, guid: d3eb2a86c1f1d4d9d932c480471a790b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4490,6 +4542,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1085776934076653517, guid: 4059ba2e9116b4a7599c3fb5f1c9a25d, type: 3}
   m_PrefabInstance: {fileID: 1906364992}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2062690689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8103307832034781211, guid: d2cf26c1fbc624aec8d69d78f09cb6fb, type: 3}
+  m_PrefabInstance: {fileID: 418903147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2062690699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062690689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 1
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 1
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 0.5, y: 0.5}
+  Lookahead:
+    Enabled: 1
+    Time: 1
+    Smoothing: 14.2
+    IgnoreY: 0
 --- !u!1001 &2068109679
 PrefabInstance:
   m_ObjectHideFlags: 0
