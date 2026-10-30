@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PoolBallSpin
   linearDampingFactor: 0.25
   angularDampingFactor: 0.25
-  magnusForceFactor: 0.1
+  magnusForceFactor: 0.5
   minLinearVelocity: 0.01
 --- !u!1 &5729545254699195026
 GameObject:

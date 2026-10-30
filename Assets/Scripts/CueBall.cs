@@ -1,11 +1,10 @@
-using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
 public class CueBall : MonoBehaviour
 {
     private Rigidbody rb;
-    private CinemachineCamera camera;
+    public CinemachineCamera camera;
 
     public float minFollowVelocity = 0.3f;
     public int cameraPriority = 2;
@@ -16,7 +15,6 @@ public class CueBall : MonoBehaviour
     private void Awake()
     {
         rb = GetComponentInChildren<Rigidbody>();
-        camera = GetComponentInChildren<CinemachineCamera>();
     }
 
     void Update()

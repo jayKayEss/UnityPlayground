@@ -215,8 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc6590735aca443a893d4d385bfd83be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CueBall
-  initialDrag: 0.5
-  dragVelocity: 0.5
+  camera: {fileID: 4079315376006881790}
   minFollowVelocity: 0.3
   cameraPriority: 2
   minCameraSwitchTime: 0.5
