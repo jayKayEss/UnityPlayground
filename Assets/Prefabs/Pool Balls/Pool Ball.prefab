@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4238654995600878150}
   - component: {fileID: 4348749575395452584}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Pool Ball
-  m_TagString: CueBall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 5802071308019440734}
   - component: {fileID: 9174928842887899673}
   - component: {fileID: 1145049066920602433}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Debug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 7060577629874466121}
   - component: {fileID: 7472198848772384959}
   - component: {fileID: 8717510845588372830}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Model
   m_TagString: CueBall
   m_Icon: {fileID: 0}

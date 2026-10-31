@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4079315376006881790}
   - component: {fileID: 336947076829730281}
   - component: {fileID: 1969814540588846950}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cue Ball Camera
-  m_TagString: Untagged
+  m_TagString: CueBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,17 +137,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cue Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 698431580592049080, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 698431580592049080, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_TagString
+      value: CueBall
+      objectReference: {fileID: 0}
     - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.92599
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.49059
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -155,15 +163,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -176,6 +184,14 @@ PrefabInstance:
     - target: {fileID: 4238654995600878150, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729545254699195026, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6455167968374643409, guid: 4e93b9414ce584cc98f03cc4d61574a6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
