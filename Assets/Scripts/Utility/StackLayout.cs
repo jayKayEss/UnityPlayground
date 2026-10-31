@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class StackLayout : MonoBehaviour
@@ -33,16 +32,9 @@ public class StackLayout : MonoBehaviour
 
     void LayoutChildren()
     {
-        StopAllCoroutines();
-        StartCoroutine(LayoutChildrenRoutine());
-    }
-
-    IEnumerator LayoutChildrenRoutine()
-    {
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).localPosition = ChildPosition(i);
-            yield return null;
         }
     }
 
