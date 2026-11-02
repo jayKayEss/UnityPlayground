@@ -1,9 +1,18 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PoolPocket : MonoBehaviour
 {
-    public ParticleSystemRenderer vfx;
-    public Material successVFX;
+    public int cameraPriority = 5;
+
+    private ParticleSystem vfx;
+    private CinemachineCamera camera;
+
+    private void Awake()
+    {
+        vfx = GetComponentInChildren<ParticleSystem>();
+        camera = GetComponentInChildren<CinemachineCamera>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,7 +29,7 @@ public class PoolPocket : MonoBehaviour
     void OnSuccess()
     {
         Debug.Log("SUCCESS!!!");
-        // vfx.material.color = Color.green;
-        vfx.material = successVFX;
+        vfx.Play();
+        camera.Priority = cameraPriority;
     }
 }
