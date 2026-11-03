@@ -28,10 +28,11 @@ public class PoolBall : MonoBehaviour
             rb.angularDamping += angularDampingFactor * Time.fixedDeltaTime;
 
             Vector3 magnusForce =
-                magnusForceFactor * Vector3.Cross(rb.linearVelocity, rb.angularVelocity);
-            Debug.DrawRay(rb.position, magnusForce, Color.orange);
+                magnusForceFactor * Vector3.Cross(rb.linearVelocity, -rb.angularVelocity);
+            Vector3 adjustedMagnusForce = new(magnusForce.x, 0f, magnusForce.z);
+            Debug.DrawRay(rb.position, adjustedMagnusForce, Color.orange);
 
-            rb.AddForce(Time.fixedDeltaTime * magnusForce);
+            rb.AddForce(Time.fixedDeltaTime * adjustedMagnusForce);
         }
         else
         {
