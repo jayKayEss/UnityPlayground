@@ -173,7 +173,8 @@ MonoBehaviour:
     m_Bits: 64
   maxOffset: -1.5
   initialZPos: 1
-  maxBounceForce: 25
+  maxBounceForce: 60
+  aimSpeed: 2.5
   maxAimDistance: 1.5
 --- !u!95 &-7827440626495982607
 Animator:

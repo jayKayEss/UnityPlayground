@@ -12,20 +12,18 @@ public class CueStick : MonoBehaviour
     private static readonly int IsShootingHash = Animator.StringToHash("isShooting");
 
     public LayerMask hitMask;
-    public float maxOffset = -3;
-
-    public float initialZPos = 1;
-
-    public float maxBounceForce = 10f;
-    public float aimSpeed = 40f;
-    public float maxAimDistance = 2f;
+    public float maxBounceForce = 25f;
+    public float aimSpeed = 5f;
+    public float maxAimDistance = 1.5f;
+    public float maxAimYOffset = 0.8f;
 
     private Animator animator;
     private InputAction aimAction;
     private InputAction lookAction;
     private InputAction shootAction;
 
-    private Quaternion initialRotation;
+    private Vector3 initialPosition;
+    private float aimYOffset = 0f;
     private bool isAiming = false;
     private bool isShooting = false;
     private bool hasTarget = false;
@@ -36,7 +34,7 @@ public class CueStick : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        initialRotation = transform.localRotation;
+        initialPosition = transform.localPosition;
     }
 
     void Start()
@@ -90,14 +88,23 @@ public class CueStick : MonoBehaviour
 
         if (lookInput.magnitude > 0f)
         {
-            Vector3 rotationVector = new(-lookInput.y, 0f, 0f);
-            transform.Rotate(aimSpeed * Time.deltaTime * rotationVector);
+            aimYOffset = Mathf.Clamp(
+                aimYOffset + lookInput.y * aimSpeed * Time.deltaTime,
+                -maxAimYOffset,
+                maxAimYOffset
+            );
+
+            transform.localPosition = new(
+                transform.localPosition.x,
+                initialPosition.y + aimYOffset,
+                transform.localPosition.z
+            );
         }
     }
 
     private void ResetAim()
     {
-        transform.localRotation = initialRotation;
+        transform.localPosition = initialPosition;
     }
 
     private void FindTarget()
