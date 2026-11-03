@@ -14,7 +14,7 @@ public class CueStick : MonoBehaviour
     public LayerMask hitMask;
     public float maxBounceForce = 25f;
     public float aimSpeed = 5f;
-    public float maxAimDistance = 1.5f;
+    public float maxAimZDistance = 1.5f;
     public float maxAimYOffset = 0.8f;
 
     private Animator animator;
@@ -23,7 +23,7 @@ public class CueStick : MonoBehaviour
     private InputAction shootAction;
 
     private Vector3 initialPosition;
-    private float aimYOffset = 0f;
+    private Vector3 aimPosition = Vector3.zero;
     private bool isAiming = false;
     private bool isShooting = false;
     private bool hasTarget = false;
@@ -88,23 +88,19 @@ public class CueStick : MonoBehaviour
 
         if (lookInput.magnitude > 0f)
         {
-            aimYOffset = Mathf.Clamp(
-                aimYOffset + lookInput.y * aimSpeed * Time.deltaTime,
-                -maxAimYOffset,
-                maxAimYOffset
+            aimPosition = Vector3.ClampMagnitude(
+                new(0f, aimPosition.y + lookInput.y * aimSpeed * Time.deltaTime, 0f),
+                0.8f
             );
 
-            transform.localPosition = new(
-                transform.localPosition.x,
-                initialPosition.y + aimYOffset,
-                transform.localPosition.z
-            );
+            transform.localPosition = initialPosition + aimPosition;
         }
     }
 
     private void ResetAim()
     {
         transform.localPosition = initialPosition;
+        aimPosition = Vector3.zero;
     }
 
     private void FindTarget()
@@ -116,17 +112,23 @@ public class CueStick : MonoBehaviour
         }
 
         if (
-            Physics.Raycast(transform.position, transform.forward, out hit, maxAimDistance, hitMask)
+            Physics.Raycast(
+                transform.position,
+                transform.forward,
+                out hit,
+                maxAimZDistance,
+                hitMask
+            )
         )
         {
             Debug.DrawLine(transform.position, hit.point, Color.red);
-            shootFactor = 1 - hit.distance / maxAimDistance;
+            shootFactor = 1 - hit.distance / maxAimZDistance;
             hasTarget = true;
             OnCueTarget.Invoke(hit.point, shootFactor);
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.forward * maxAimDistance, Color.green);
+            Debug.DrawRay(transform.position, transform.forward * maxAimZDistance, Color.green);
             hasTarget = false;
             OnCueTargetLost.Invoke();
         }

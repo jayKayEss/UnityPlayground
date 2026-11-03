@@ -13,11 +13,11 @@ public class PlayerMovement : MonoBehaviour
     private InputAction moveAction;
     private InputAction lookAction;
     private InputAction sprintAction;
+    private bool isLookInputLocked = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // body = GetComponent<Rigidbody>();
         body = GetComponent<CharacterController>();
 
         moveAction = InputSystem.actions.FindAction("Move");

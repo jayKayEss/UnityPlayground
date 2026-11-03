@@ -29,10 +29,8 @@ public class PoolBall : MonoBehaviour
 
             Vector3 magnusForce =
                 magnusForceFactor * Vector3.Cross(rb.linearVelocity, -rb.angularVelocity);
-            Vector3 adjustedMagnusForce = new(magnusForce.x, 0f, magnusForce.z);
-            Debug.DrawRay(rb.position, adjustedMagnusForce, Color.orange);
-
-            rb.AddForce(Time.fixedDeltaTime * adjustedMagnusForce);
+            Debug.DrawRay(rb.position, magnusForce, Color.orange);
+            rb.AddForce(Time.fixedDeltaTime * magnusForce);
         }
         else
         {

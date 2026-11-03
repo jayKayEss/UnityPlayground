@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4348749575395452584}
   m_Layer: 8
   m_Name: Pool Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PoolBallSpin
   linearDampingFactor: 0.25
   angularDampingFactor: 0.25
-  magnusForceFactor: 0.5
+  magnusForceFactor: 0.3
   minLinearVelocity: 0.01
 --- !u!1 &5729545254699195026
 GameObject:
@@ -77,7 +77,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6331198196762547216}
