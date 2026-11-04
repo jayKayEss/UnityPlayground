@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1c925ceb8bb4c8dbd40efdede48cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoolBallSpin
-  linearDampingFactor: 0.25
-  angularDampingFactor: 0.25
-  magnusForceFactor: 0.3
+  linearDampingFactor: 0.01
+  angularDampingFactor: 0.01
+  magnusForceScale: {x: 0.25, y: 0.05, z: 0.25}
   minLinearVelocity: 0.01
 --- !u!1 &5729545254699195026
 GameObject:
