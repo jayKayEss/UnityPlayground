@@ -3,16 +3,9 @@ using UnityEngine;
 
 public class PoolPocket : MonoBehaviour
 {
+    public ParticleSystem vfx;
+    public CinemachineCamera camera;
     public int cameraPriority = 5;
-
-    private ParticleSystem vfx;
-    private CinemachineCamera camera;
-
-    private void Awake()
-    {
-        vfx = GetComponentInChildren<ParticleSystem>();
-        camera = GetComponentInChildren<CinemachineCamera>();
-    }
 
     void OnTriggerEnter(Collider other)
     {

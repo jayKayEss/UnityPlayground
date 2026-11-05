@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: c43cc2cdf3ef345d5a734698da0c4da2
+guid: 4db5f78f3d3044d6fb9209ba9b41e0a5
 ModelImporter:
   serializedVersion: 24501
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SharedPalette
+    second: {fileID: 2100000, guid: 30790a2c30559418b899e699e79bb299, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
