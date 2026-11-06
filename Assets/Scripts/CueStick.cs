@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class CueStick : MonoBehaviour
 {
     public static event Action<Vector3, float> OnCueTarget;
+    public static event Action<Rigidbody> OnCueStrike;
     public static event Action OnCueTargetLost;
 
     private static readonly int IsAimingHash = Animator.StringToHash("isAiming");
@@ -159,5 +160,6 @@ public class CueStick : MonoBehaviour
         hit.rigidbody.AddForceAtPosition(ShootVector(), hit.point, ForceMode.Impulse);
 
         didShoot = true;
+        OnCueStrike?.Invoke(hit.rigidbody);
     }
 }
